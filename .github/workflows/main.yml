@@ -8,6 +8,7 @@ jobs:
   hello_world_job:
     runs-on: ubuntu-latest
     name: Check CodePush pre-requisites
+    steps:
       # To use this repository's private action,
       # you must check out the repository
       - name: Checkout
@@ -15,5 +16,3 @@ jobs:
       - name: Check branch
         uses: ./ # Uses an action in the root directory
         id: Branch
-        with:
-          action: {{ github }}
