@@ -2,7 +2,7 @@ name: CodePush Workflow
 
 on:
   pull_request:
-    types: [ opened, edited ]
+    types: [ opened, edited, labeled, unlabeled ]
 
 jobs:
   hello_world_job:
