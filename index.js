@@ -8,7 +8,8 @@ try {
     const PRMeta = context.payload.pull_request;
     const baseRef = PRMeta.base.ref;
     const labels = PRMeta.labels.map(label => label.name);
-    console.log(baseRef, labels, context.action, context.payload.label);
+    const action = core.getInput('action');
+    console.log(baseRef, labels, context.action, context.payload.label, action);
     
     switch (context.action) {
         case 'opened':
