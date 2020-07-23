@@ -8,23 +8,17 @@ try {
     const PRMeta = context.payload.pull_request;
     const baseRef = PRMeta.base.ref;
     const labels = PRMeta.labels.map(label => label.name);
-    console.log(baseRef, labels, context.action, context.payload.label, context);
+    const action = context.payload.action;
+    console.log(baseRef, labels);
     
-    switch (context.action) {
+    switch (action) {
         case 'opened':
-        case 'edited': {
-
+        case 'edited':
+        case 'labeled':
+        case 'unlabeled': {
             const isCodePush = labels.includes(LABEL_CODEPUSH);
 
             if (isCodePush) {
-                performCodePushChecks(baseRef, labels);
-            }
-            break;
-        }
-        case 'labeled':
-        case 'unlabeled': {
-            const label = context.payload.label.name;
-            if ([LABEL_CODEPUSH, LABEL_QA_PASSED].includes(label)) {
                 performCodePushChecks(baseRef, labels);
             }
             break;
