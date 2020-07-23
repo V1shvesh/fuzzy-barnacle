@@ -1,0 +1,5 @@
+name: 'Codepush'
+description: 'Check Codepush pre-req'
+runs:
+  using: 'node12'
+  main: 'index.js'
